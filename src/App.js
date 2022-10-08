@@ -25,6 +25,9 @@ import ProfileViewer from "./pages/ProfileViewer";
 import Service from "./components/service/Service";
 import MovieType from "./components/movie/MovieType";
 import AddMovie from "./components/admin/movieadmin/AddMovie";
+import Payment from "./components/service/Payment";
+import SeriesPage from "./pages/SeriesPage";
+// /import FirebaseAuth from "./firebase/FirebaseAuth";
 
 function App() {
   return (
@@ -41,7 +44,7 @@ function App() {
             }
           ></Route>
           <Route path="/movies" element={<MoviePage></MoviePage>}></Route>
-          <Route path="/series" element={<MoviePage></MoviePage>}></Route>
+          <Route path="/series" element={<SeriesPage></SeriesPage>}></Route>
           <Route
             path="/newandpopular"
             element={<MoviePage></MoviePage>}
@@ -65,6 +68,10 @@ function App() {
             element={<MovieType></MovieType>}
           ></Route>
           <Route path="/service" element={<Service></Service>}></Route>
+          <Route
+            path="/payment/:serviceId"
+            element={<Payment></Payment>}
+          ></Route>
           <Route
             path="/famousperson/:personId"
             element={<ProfileFamousPerson></ProfileFamousPerson>}

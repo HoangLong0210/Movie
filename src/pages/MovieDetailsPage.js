@@ -33,6 +33,26 @@ const MovieDetailsPage = () => {
     });
   };
 
+  const showListEpisode = () => {
+    return movie[0]?.episodes.map((episode, index) => {
+      if (movie[0]?.episodes.length > 1) {
+        return (
+          <div className="inline-block m-2">
+            <span
+              key={episode?.episode_movie}
+              className="px-4 py-2 text-lg border rounded-md cursor-pointer hover:border-primary hover:text-primary"
+              onClick={() =>
+                navigate(`/watch/${movie[0]?.movie_id}/${index + 1}`)
+              }
+            >
+              Tập {episode?.episode_movie}
+            </span>
+          </div>
+        );
+      } else return null;
+    });
+  };
+
   const trailerMovie = () => {
     return (
       <div className="py-10">
@@ -113,12 +133,12 @@ const MovieDetailsPage = () => {
           alt=""
           className="w-[500px] h-[700px] overflow-hidden  transition-all ease-in-out delay-750 hover:scale-125 hover:rotate-3"
         />
-        <div className="mt-10">
+        <div className="my-5">
           <button
             className="h-16 text-3xl bg-blue-600 rounded-lg w-[200px] mr-24 hover:bg-primary"
             onClick={() =>
               navigate(
-                `/watch/${movie[0]?.movie_id}/${movie[0]?.episode[0]?.episode_movie}`
+                `/watch/${movie[0]?.movie_id}/${movie[0]?.episodes[0]?.episode_movie}`
               )
             }
           >
@@ -127,14 +147,18 @@ const MovieDetailsPage = () => {
           <button className="h-16 text-3xl bg-blue-600 rounded-lg w-[200px] hover:bg-primary">
             THÍCH PHIM
           </button>
+          <div className="my-5">{showListEpisode()}</div>
         </div>
       </div>
       <div className="pt-3 pl-3 info">
         <div className="my-5 py-2 text-6xl font-bold bg-[linear-gradient(45deg,#00FFFF,#00FF00)] bg-clip-text text-transparent">
           {movie[0]?.title}
         </div>
-        <div className="my-5 text-xl font-bold bg-[linear-gradient(45deg,#00FFFF,#00FF00)] bg-clip-text text-transparent">
+        <div className="my-5 italic text-3xl font-bold bg-[linear-gradient(45deg,#00FFFF,#00FF00)] bg-clip-text text-transparent">
           {movie[0]?.titleenglish}
+        </div>
+        <div className="my-5 text-xl font-bold text-blue-600">
+          {movie[0]?.typemovie}
         </div>
         <div className="my-8 mr-8">
           <div className="inline-block mr-16">
@@ -145,10 +169,16 @@ const MovieDetailsPage = () => {
           </div>
           <div className="inline-block mr-16">
             <label htmlFor="" className="block mb-2 text-sm text-white">
+              Số tập
+            </label>
+            <span className="text-2xl">{movie[0]?.episodes?.length}</span>
+          </div>
+          <div className="inline-block mr-16">
+            <label htmlFor="" className="block mb-2 text-sm text-white">
               Thời lượng phim
             </label>
             <span className="text-2xl">
-              {movie[0]?.episode[0]?.duration} phút
+              {movie[0]?.episodes[0]?.duration} phút
             </span>
           </div>
           <div className="inline-block mr-16">

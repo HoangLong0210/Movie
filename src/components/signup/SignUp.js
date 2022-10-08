@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-[500px] min-h-[100vh-56px] flex justify-center ml-[-16px] mb-[-80px] relative">
+    <div className="w-[500px] min-h-[100vh-56px] flex justify-center ml-[-16px] -mt-20 relative">
       <div className="bg-[#202451] rounded flex p-10 w-full flex-col justify-center items-center absolute top-[200px] left-[800px]">
         <h1 className="mb-2 text-3xl text-white ">ĐĂNG KÝ</h1>
         <Formik
